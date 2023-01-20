@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/estilo.css">
-    <title>Chuleta Quente Churrascaria</title>
+    <title>Churrascaria Fornalha</title>
 </head>
 <body class="fundofixo">
 
@@ -44,7 +44,7 @@
             dots: true,
             infinity: true,
             slidesToShow: 3,
-            slidesToShow
+            slidesToScroll: 3
         });
     });
 </script>
