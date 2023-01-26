@@ -49,7 +49,7 @@ $num_linhas = $lista->num_rows;
                                     <button class="btn btn-default disable" role="button" style="cursor: default">
                                         <?php echo "R$ ".number_format($row_destaque['valor_produto'],2,",",".");?>
                                     </button>
-                                    <a href="produto_detalhes.php?id_produto="<?php echo $row_destaque ['id_produto']?>>
+                                    <a href="produto_detalhes.php?id_produto=<?php echo $row_destaque['id_produto']?>">
                                         <span class="hidden-xs">Saiba Mais...</span>
                                         <span class="hidden-xs glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                                     </a>
@@ -62,3 +62,4 @@ $num_linhas = $lista->num_rows;
         <?php }?>
 
 </body>
+</html>
