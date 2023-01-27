@@ -18,34 +18,44 @@ $num_linhas = $lista->num_rows;
 <body class="fundofixo">
 <?php include 'menu_publico.php'?>
     <div class="container">
-        
-
-            <div class="row">
-                
-                    <div class="col-sm-6 col-md-4">
+    <h2 class="breadcrumb alert-danger">
+                <strong> Detalhe do produto - <?php echo $row_destaque ['descri_produto']?></strong>
+            </h2>
+            <div class="row">   
+                    <div class="col-sm-6 col-md-12">
                         <div class="thumbnail">
+                            <div class="text-left">
                             <a href="produto_detalhes.php?id_produto=<?php echo $row_destaque ['id_produto']?>">
                                 <img src="images/<?php echo $row_destaque ['imagem_produto']?>" class="img-responsive img-rounded">
                             </a>
+                            </div>
                             <div class="caption text-right">
+                                
+                            <div class="text-left">
                                 <h3 class="text-danger">
                                     <strong><?php echo $row_destaque ['descri_produto']?></strong>
                                 </h3>
+                                
                                 <p class="text-warning">
                                     <strong><?php echo $row_destaque ['rotulo_tipo']?></strong>
                                 </p>
+                            </div>
+
                                 <p class="text-left">
-                                    <?php echo mb_strimwidth($row_destaque ['resumo_produto'],0,42,'...');?>
+                                    <?php echo mb_strimwidth($row_destaque ['resumo_produto'],0,500,'...');?>
                                 </p>
                                 <p>
-                                    <button class="btn btn-default disable" role="button" style="cursor: default">
+                                    <button class="btn btn-secondary disable" role="button" style="cursor: default">
                                         <?php echo "R$ ".number_format($row_destaque['valor_produto'],2,",",".");?>
                                     </button>
-                                    <a href="produto_detalhes.php?id_produto=<?php echo $row_destaque['id_produto']?>">
-                                        <span class="hidden-xs">Saiba Mais...</span>
-                                        <span class="hidden-xs glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                                    </a>
+
                                 </p>
+                                <!-- Botão voltar página -->
+                                <div class="text-left">
+                                <a href="javascript:window.history.go(-1)" class="btn btn-danger">
+                                    <span class="glyphicon glyphicon-chevron-left"> Voltar </span>
+                                </a>
+                                </div>
                             </div>
                         </div>
                     </div>
