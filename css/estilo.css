@@ -7,3 +7,32 @@
     -webkit-background-size: cover;
 }
 
+.bg-branco{
+    background-color: #FFF;
+}
+
+.w-500{
+    width: 500px;
+}
+
+.teste{
+    display: flex;
+    justify-content: space-around;
+}
+
+.margin_img{
+    margin: 10px 150px 50px 0px;
+}
+
+.margin_txt{
+    margin: 0px 0px 100px 250px;
+}
+
+.margin_top{
+    margin-top: 50px;
+}
+
+.texto{
+    font-size: 20px;
+    color: black;
+}
