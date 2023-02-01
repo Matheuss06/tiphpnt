@@ -26,7 +26,7 @@ $num_linhas = $lista->num_rows;
 
                         <div class="thumbnail">
 
-                            <div class="teste margin_img">
+                            <div class="flexx margin_img">
 
                                     <img src="images/<?php echo $row_destaque ['imagem_produto']?>" class="img-responsive w-500">
 
