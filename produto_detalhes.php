@@ -13,25 +13,30 @@ $num_linhas = $lista->num_rows;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/estilo.css">
-    <title>Document</title>
+    <title><?php echo $row_destaque ['descri_produto']?> - Churrascaria Fornalha</title>
 </head>
 <body class="fundofixo">
 <?php include 'menu_publico.php'?>
+
     <div class="container">
-    <h2 class="breadcrumb alert-danger">
-                <strong> Detalhe do produto - <?php echo $row_destaque ['descri_produto']?></strong>
-            </h2>
-            <div>   
-                    <div>
+        <h2 class="breadcrumb alert-danger">
+            <!-- Botão voltar página -->
+        <a href="javascript:window.history.go(-1)" class="btn btn-danger">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+            <strong> Detalhes do produto - <?php echo $row_destaque ['descri_produto']?></strong>
+        </h2>
 
-                        <div class="thumbnail">
 
-                            <div class="flexx margin_img">
+            <div class="row">
+                <div class="col-md-12">
 
-                                    <img src="images/<?php echo $row_destaque ['imagem_produto']?>" class="img-responsive w-500">
+                        <div class="thumbnail col-md-12">
+                                <div class="col-md-8">
+                                    <img src="images/<?php echo $row_destaque ['imagem_produto']?>" class="img-responsive">
+                                </div>
 
-                                <div class="margin_txt">
-
+                                <div>
                                     <h3 class="text-danger">
                                         <strong><?php echo $row_destaque ['descri_produto']?></strong>
                                     </h3>
@@ -40,35 +45,22 @@ $num_linhas = $lista->num_rows;
                                         <strong><?php echo $row_destaque ['rotulo_tipo']?></strong>
                                     </p>
 
-                                    <p class="margin_top">
-                                        <span class="texto" style="cursor: default">
+                                    <p class="">
+                                        <span class="btn btn-primary" style="cursor: default">
                                                 <?php echo "R$ ".number_format($row_destaque['valor_produto'],2,",",".");?>
+                                        </span>
+                                        <span class="btn btn-success" style="cursor: pointer">
+                                                COMPRAR
                                         </span>
                                     </p>
                                 </div>
-
-                            </div>
-
-
-                                <p class="text-left texto">
+                            
+                                <p class="texto d-flex align-items-end">
                                     <?php echo mb_strimwidth($row_destaque ['resumo_produto'],0,500,'...');?>
-                                </p>
-
-                                <!-- Botão voltar página -->
-                                <div class="text-left">
-
-                                    <a href="javascript:window.history.go(-1)" class="btn btn-danger">
-                                        <span class="glyphicon glyphicon-chevron-left"> Voltar </span>
-                                    </a>
-
-                                </div>
-
+                                </p>   
                         </div>
-                        
-                    </div>
-                
+                </div>   
             </div>
-
     </div>  
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
