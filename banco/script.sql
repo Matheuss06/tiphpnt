@@ -61,7 +61,7 @@ ALTER TABLE `tbtipos`
 CREATE TABLE `tbusuarios` (
   `id_usuario` int(11) NOT NULL,
   `login_usuario` varchar(30) NOT NULL,
-  `senha_usuario` varchar(8) NOT NULL,
+  `senha_usuario` varchar(32) NOT NULL,
   `nivel_usuario` ENUM('sup','com') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -72,7 +72,7 @@ INSERT INTO `tbusuarios`
 		(1, 'senac', '1234', 'sup'),
 		(2, 'joao', '456', 'com'),
 		(3, 'maria', '789', 'com'),
-		(4, 'iwanezuk', '1234', 'sup');
+		(4, 'matheus', '1234', 'sup');
 
 -- Índices de tabela `tbtipos`
 ALTER TABLE `tbusuarios`

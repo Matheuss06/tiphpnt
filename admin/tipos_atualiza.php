@@ -1,47 +1,35 @@
+<!-- continuar AQ -->
+
 <?php 
 include 'acesso_com.php';
 include '../conn/connect.php';
 
 if($_POST){ 
-    if($_FILES['imagem_produto']['name']){
-        $nome_img = $_FILES['imagem_produto']['name'];
-        $tmp_img = $_FILES['imagem_produto']['tmp_name'];
-        $dir_img = "../images/".$nome_img;
-        move_uploaded_file($tmp_img, $dir_img);
-    }else{
-        $nome_img = $_POST['imagem_produto_atual'];
-    }
 
-    $id_tipo_produto = $_POST['id_tipo_produto'];
-    $destaque_produto = $_POST['destaque_produto'];
-    $descri_produto = $_POST['descri_produto'];
-    $resumo_produto = $_POST['resumo_produto'];
-    $valor_produto = $_POST['valor_produto'];
-    $imagem_produto = $nome_img;
+    $id_tipo = $_POST['id_tipo'];
+    $sigla_tipo = $_POST['sigla_tipo'];
+    $rotulo_tipo = $_POST['rotulo_tipo'];
 
-    $id = $_POST['id_produto'];
+    $id = $_POST['id_tipo'];
     
-    $updateSql = "update tbprodutos
-                  set id_tipo_produto = '$id_tipo_produto',
-                  destaque_produto = '$destaque_produto',
-                  descri_produto = '$descri_produto',
-                  resumo_produto = '$resumo_produto',
-                  valor_produto =  '$valor_produto',
-                  imagem_produto = '$nome_img'
+    $updateSql = "update tbtipos
+                  set id_tipo = '$id_tipo',
+                  sigla_tipo = '$sigla_tipo',
+                  rotulo_tipo = '$rotulo_tipo',
                   where id_produto = $id; ";
 
     $resultado = $conn->query($updateSql);
     if($resultado){
-        header('location: produtos_lista.php');
+        header('location: tipos_lista.php');
     }
 }
 
 if($_GET){
-    $id_form = $_GET['id_produto'];
+    $id_form = $_GET['id_tipo'];
 }else{
     $id_form = 0;
 }
-$lista = $conn->query("select * from tbprodutos where id_produto = $id_form");
+$lista = $conn->query("select * from tbtipos where id_tipo = $id_form");
 $row = $lista->fetch_assoc();
 $numRows = $lista->num_rows;
 
@@ -74,13 +62,13 @@ $numRows = $lista->num_rows;
                             <span class="glyphicon glyphicon-chevron-left"></span>
                         </button>
                     </a>
-                    Inserindo Produtos
+                    Inserindo Tipos
                 </h2>
                 <div class="thumbnail">
                     <div class="alert alert-danger" role="alert">
-                        <form action="produtos_atualiza.php" method="post" name="form_produto_insere" enctype="multipart/form-data" id="form_produto_insere" value="<?php echo $row['id_produto'] ?>">
-                            <input type="hidden" name="id_produto" id="id_produto" value="<?php echo $row['id_produto']?>">
-                            <label for="id_tipo_produto">Tipo:</label>
+                        <form action="tipos_atualiza.php" method="post" name="form_produto_insere" enctype="multipart/form-data" id="form_produto_insere" value="<?php echo $row['id_tipo'] ?>">
+                            <input type="hidden" name="id_tipo" id="id_tipo" value="<?php echo $row['rotulo_tipo']?>">
+                            <label for="rotulo_tipo">Tipo:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
