@@ -11,14 +11,14 @@ $rows = $lista->num_rows;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produtos - Lista</title>
+    <title>Tipos - Lista</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/estilo.css">
 </head>
 <body> 
     <?php include "menu_adm.php"; ?>
     <main class="container">
-        <h2 class="breadcrumb alert-success" >Lista de Produtos </h2>
+        <h2 class="breadcrumb alert-success" >Lista de Tipos </h2>
         <table class="table table-hover table-condensed tb-opacidade bg-success"> 
             <thead>
                 <th class="hidden">ID</th>
@@ -48,7 +48,7 @@ $rows = $lista->num_rows;
                             <?php  echo $row['sigla_tipo'] ?> 
                         </td>
                        
-                        <td >
+                        <td>
                             <a href="tipos_atualiza.php?id_tipo=<?php echo $row['id_tipo']?>" role="button" class="btn btn-warning btn-block btn-xs"> 
                                 <span class="glyphicon glyphicon-refresh"></span>
                                 <span class="hidden-xs">ALTERAR</span>
@@ -100,7 +100,7 @@ $rows = $lista->num_rows;
         var id = $(this).data('id'); // busca o id (data-id)
         //console.log(id + ' - ' + nome); //exibe no console
         $('span.nome').text(nome); // insere o nome do item na confirmação
-        $('a.delete-yes').attr('href','produtos_excluir.php?id_produto='+id); //chama o arquivo php para excluir o produto
+        $('a.delete-yes').attr('href','tipos_excluir.php?id_tipo='+id); //chama o arquivo php para excluir o produto
         $('#modalEdit').modal('show'); // chamar o modal
     });
 </script>
