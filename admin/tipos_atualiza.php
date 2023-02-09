@@ -49,7 +49,7 @@ $numRows = $lista->num_rows;
     <main class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-offset-2 col-sm-6 col-md-8">
-                <h2 class="breadcrumb text-danger">
+                <h2 class="breadcrumb text-primary">
                     <a href="tipos_lista.php">
                         <button class="btn btn-danger">
                             <span class="glyphicon glyphicon-chevron-left"></span>
@@ -58,7 +58,7 @@ $numRows = $lista->num_rows;
                     Alterando o Tipo
                 </h2>
                 <div class="thumbnail">
-                    <div class="alert alert-danger" role="alert">
+                    <div class="alert alert-primary" role="alert">
                         <form action="tipos_atualiza.php" method="post" name="form_tipos_insere" enctype="multipart/form-data" id="form_tipos_insere" value="<?php echo $row['id_tipo'] ?>">
                             <input type="hidden" name="id_tipo" id="id_tipo" value="<?php echo $row['id_tipo']?>">
                             <label for="rotulo_tipo">Tipo:</label>

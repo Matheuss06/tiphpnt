@@ -48,7 +48,7 @@ if($_POST){
     <main class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-offset-2 col-sm-6 col-md-8">
-                <h2 class="breadcrumb text-danger">
+                <h2 class="breadcrumb text-success">
                     <a href="tipos_lista.php">
                         <button class="btn btn-danger">
                             <span class="glyphicon glyphicon-chevron-left"></span>
@@ -57,7 +57,7 @@ if($_POST){
                     Inserindo o Tipo
                 </h2>
                 <div class="thumbnail">
-                    <div class="alert alert-danger" role="alert">
+                    <div class="alert alert-success" role="alert">
                         <form action="tipos_insere.php" method="post" name="form_produto_insere" enctype="multipart/form-data" id="form_produto_insere">
                             <label for="id_tipo">Tipo:</label>
                             <div class="input-group">
