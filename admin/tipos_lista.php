@@ -53,7 +53,9 @@ $rows = $lista->num_rows;
                                 <span class="glyphicon glyphicon-refresh"></span>
                                 <span class="hidden-xs">ALTERAR</span>
                             </a>
-                            <button 
+
+                            <?php $consulta = $conn->query("select id_tipo_produto from tbprodutos where id_tipo_produto = ".$row['id_tipo']." limit 1;")?>
+                            <button <?php echo $consulta->num_rows>0?'disabled':''?>
                                 data-nome="<?php echo $row['sigla_tipo'];?>" 
                                 data-id="<?php echo $row['id_tipo'];?>"
                                 class="delete btn btn-xs btn-block btn-danger">
