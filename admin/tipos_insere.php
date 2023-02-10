@@ -73,7 +73,7 @@ if($_POST){
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>
                                 </span>
-                                <input type="text" name="sigla_tipo" id="sigla_tipo" class="form-control" placeholder="Digite a descrição do produto" maxlength="3" required>
+                                <input type="text" name="sigla_tipo" id="sigla_tipo" class="form-control" placeholder="Digite a sigla do tipo" maxlength="3" required>
                             </div>
 
                            

@@ -85,10 +85,8 @@ $numRows = $lista->num_rows;
                                 </select>
                             </div>
                     
-
                             <hr>
                             <input type="submit" id="atualizar" name="atualizar" class="btn btn-danger btn-block" value="Atualizar">
-                        
                         </form>
                     </div>
                 </div>
