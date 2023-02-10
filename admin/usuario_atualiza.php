@@ -24,6 +24,16 @@ if($_POST){
     }
 }
 
+if($_GET){
+    $id_form = $_GET['id_tipo'];
+}else{
+    $id_form = 0;
+}
+$lista = $conn->query("select * from tbusuarios where id_usuario = $id_form");
+$row = $lista->fetch_assoc();
+$numRows = $lista->num_rows;
+
+
 ?>
 
 <!DOCTYPE html>
@@ -62,12 +72,17 @@ if($_POST){
                                 <input type="text" name="login_usuario" id="login_usuario" class="form-control" placeholder="Digite o tipo do produto" maxlength="100" required value="<?php echo $row['login_usuario']?>">
                             </div>
 
-                            <label for="nivel_usuario">Nivel:</label>     
+                            <label for="nivel_usuario">Nivel:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>
+                                    <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
                                 </span>
-                                <input type="text" name="nivel_usuario" id="nivel_usuario" class="form-control" placeholder="Digite a descrição do produto" maxlength="3" required value="<?php echo $row['nivel_usuario']?>">
+                                <select name="nivel_usuario" id="nivel_usuario" class="form-control" value="<?php echo $row['nivel_usuario']?>"required>
+                                    
+                                    <option value="sup">Superior</option>
+                                    <option value="com">Comum</option>
+
+                                </select>
                             </div>
                     
 
