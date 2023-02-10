@@ -49,7 +49,7 @@ $rows = $lista->num_rows;
                         </td>
                        
                         <td>
-                            <a href="usuario_atualiza.php?id_tipo=<?php echo $row['id_usuario']?>" role="button" class="btn btn-warning btn-block btn-xs"> 
+                            <a href="usuario_atualiza.php?id_usuario=<?php echo $row['id_usuario']?>" role="button" class="btn btn-warning btn-block btn-xs"> 
                                 <span class="glyphicon glyphicon-refresh"></span>
                                 <span class="hidden-xs">ALTERAR</span>
                             </a>

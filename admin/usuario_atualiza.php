@@ -25,7 +25,7 @@ if($_POST){
 }
 
 if($_GET){
-    $id_form = $_GET['id_tipo'];
+    $id_form = $_GET['id_usuario'];
 }else{
     $id_form = 0;
 }
