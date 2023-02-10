@@ -24,8 +24,6 @@ if($_POST){
     }
 }
 
-
-
 ?>
 
 <!DOCTYPE html>
@@ -55,21 +53,21 @@ if($_POST){
                     <div class="alert alert-primary" role="alert">
                         <form action="usuario_atualiza.php" method="post" name="form_usuario_insere" enctype="multipart/form-data" id="form_usuario_insere" value="<?php echo $row['id_usuario']?>">
                             <input type="hidden" name="id_usuario" id="id_usuario" value="<?php echo $row['id_usuario']?>">
-                            <label for="id_usuario">Login:</label>
+                            <label for="login_usuario">Login:</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
                                 </span>
 
-                                <input type="text" name="id_usuario" id="id_usuario" class="form-control" placeholder="Digite o tipo do produto" maxlength="100" required value="<?php echo $row['id_usuario']?>">
+                                <input type="text" name="login_usuario" id="login_usuario" class="form-control" placeholder="Digite o tipo do produto" maxlength="100" required value="<?php echo $row['login_usuario']?>">
                             </div>
 
-                            <label for="sigla_tipo">Sigla:</label>     
+                            <label for="nivel_usuario">Nivel:</label>     
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>
                                 </span>
-                                <input type="text" name="sigla_tipo" id="sigla_tipo" class="form-control" placeholder="Digite a descrição do produto" maxlength="3" required value="<?php echo $row['sigla_tipo']?>">
+                                <input type="text" name="nivel_usuario" id="nivel_usuario" class="form-control" placeholder="Digite a descrição do produto" maxlength="3" required value="<?php echo $row['nivel_usuario']?>">
                             </div>
                     
 
