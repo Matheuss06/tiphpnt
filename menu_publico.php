@@ -70,6 +70,13 @@ $row_tipos = $lista_tipos->fetch_all();
                     </form>
                     <!-- fim do formulario de busca -->
 
+                    <li class="fundovermelho">
+                        <a href="reservas.php">
+                            <span style="color: white;">&nbsp;RESERVA</span>
+                        </a>
+                    </li>
+
+
                     <li class="active">
                         <a href="admin/index.php">
                             <span class="glyphicon glyphicon-user">&nbsp;ADMIN/CLIENTE</span>

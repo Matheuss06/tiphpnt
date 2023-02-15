@@ -23,6 +23,9 @@
         <a name="destaques">&nbsp;</a>
         <?php include 'produtos_destaque.php'; ?>
 
+        <!-- Area da Faixa de Reservas -->
+        <?php include 'faixa_reserva.php'; ?>
+
         <!-- Area geral de produtos -->
         <a name="produtos">&nbsp;</a>
         <?php include 'produtos_geral.php'; ?>
