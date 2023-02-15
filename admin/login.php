@@ -53,7 +53,7 @@
                         <h1 class="breadcrumb text-info text-center">Faça seu login</h1>
                         <div class="thumbnail">
                             <p class="text-info text-center" role="alert">
-                                <i class="fas fa-users fa-10x"></i>
+                                <i><img src="../images/logo churrascaria maior.png" class="tamanho_img"></i>
                             </p>
                             <br>
                             <div class="alert alert-info" role="alert">
