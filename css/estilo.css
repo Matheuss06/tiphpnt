@@ -7,6 +7,12 @@
     -webkit-background-size: cover;
 }
 
+.fundocadastro{
+    background: url("../images/fundo-vermelho.png") no-repeat fixed;
+    background-size: cover;
+    -webkit-background-size: cover;
+}
+
 .fundovermelho{
     background-color: rgb(255, 0, 0);
 }
