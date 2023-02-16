@@ -11,6 +11,14 @@
     background-color: rgb(255, 0, 0);
 }
 
+.flex-center{
+    display: flex;
+    justify-content: center;
+}
+
+.mt-3{
+    margin-top: 3%;
+}
 
 .texto{
     font-size: 15px;
