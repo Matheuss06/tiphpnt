@@ -39,12 +39,13 @@
     <title>Reservar Mesa</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/estilo.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
 <body class="fundocadastro">
     <?php include 'menu_publico.php'; ?>
 
-    <main class="container">
-        <section>
+    <main ng-app="App" ng-controller="Controlador" class="container">
+        <section style="margin-top: 15%;">
             <article>
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
@@ -74,7 +75,7 @@
                                 <p class="text-center">
                                     <small>
                                         <br>
-                                        <a href="registrar.php">Não possui uma conta? Registre-se</a>
+                                        <span ng-click="FuncaoRegistro()" class="link_registro">Não possui uma conta? Registre-se</span>
                                     </small>
                                 </p>
                             </div><!-- fecha alert -->
@@ -83,6 +84,42 @@
                 </div><!-- fecha row -->
             </article>
         </section>
+
+        <div ng-show="Registrar">
+            <section>
+                <article>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                            <h1 class="breadcrumb text-danger text-center">Faça seu Registro</h1>
+                            <div class="thumbnail">
+                            <br>
+                                <div class="alert alert-danger" role="alert">
+                                    <form action="reservado.php" name="reserva_login" id="reserva_login" method="POST" enctype="multipart/form-data">
+                                        <label for="login_usuario">Email:</label>
+                                        <p class="input-group">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-user text-info" aria-hidden="true"></span>
+                                            </span>
+                                            <input type="text" name="login_usuario" id="login_usuario" class="form-control" autofocus required autocomplete="off" placeholder="Digite seu login.">
+                                        </p>
+                                        <label for="senha_usuario">Senha:</label>
+                                        <p class="input-group">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-qrcode text-info" aria-hidden="true"></span>
+                                            </span>
+                                            <input type="password" name="senha_usuario" id="senha_usuario" class="form-control" required autocomplete="off" placeholder="Digite seu CPF.">
+                                        </p>
+                                        <p class="text-right">
+                                            <input type="submit" value="Entrar" class="btn btn-primary">
+                                        </p>
+                                    </form>
+                                </div><!-- fecha alert -->
+                            </div><!-- fecha thumbnail -->
+                        </div><!-- fecha dimensionamento -->
+                    </div><!-- fecha row -->
+                </article>
+            </section>
+        </div>
     </main>
 
 
@@ -108,4 +145,15 @@
 </script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick/slick.min.js"></script>
 
+<script>
+    var app = angular.module('App', []);
+    app.controller ('Controlador', function($scope){
+        $scope.Registrar = false;
+
+        $scope.FuncaoRegistro = function(){
+            $scope.Registrar = !$scope.Registrar;
+        }
+    })
+
+</script>
 </html>

@@ -38,3 +38,8 @@
 .tamanho_img{
     width: 350px;
 }
+
+.link_registro{
+    cursor: pointer;
+    font-size: 10pt;
+}
