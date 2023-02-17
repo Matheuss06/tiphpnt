@@ -44,7 +44,7 @@
     <title>Chuleta Quente - Login</title>
 </head>
 
-<body>
+<body class="fundocadastro">
     <main class="container">
         <section>
             <article>
@@ -79,7 +79,7 @@
                                 <p class="text-center">
                                     <small>
                                         <br>
-                                        Caso não faça uma escolha em 30 segundos será redirecionado automaticamente para página inicial.
+                                       <a href="../reservado.php">Registre-se</a>
                                     </small>
                                 </p>
                             </div><!-- fecha alert -->
