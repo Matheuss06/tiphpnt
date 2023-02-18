@@ -6,10 +6,21 @@
         $nome = $_POST['nome'];
         $cpf = $_POST['cpf'];
         $email = $_POST['email'];
-        $senha = $_POST['senha'];
+        $senha = md5($_POST['senha']);
         $insereregistro = "INSERT INTO tbusuarios (login_usuario, senha_usuario, nivel_usuario) VALUES ('$cpf','$senha', 'com');";
         $resultadoRegistro = $conn->query($insereregistro);
 
+    // Fim registro do usuario
+    } 
+
+    // Inserir o Registro do usuario no banco na tabela de cliente
+    if($_POST){
+        $nome = $_POST['nome'];
+        $cpf = $_POST['cpf'];
+        $email = $_POST['email'];
+        $inserecliente = "INSERT INTO tbclientes (nome, cpf, email) VALUES ('$nome','$cpf', '$email');";
+        $resultadocliente = $conn->query($inserecliente);
+    
     // Fim registro do usuario
     } 
 ?>
