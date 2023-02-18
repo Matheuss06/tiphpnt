@@ -48,27 +48,27 @@
     <main class="container">
         <section>
             <article>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-                        <h1 class="breadcrumb text-info text-center">Faça seu login</h1>
+            <div class="row mt-3">
+                        <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                        <h1 class="breadcrumb text-danger text-center">Faça seu login</h1>
                         <div class="thumbnail">
-                            <p class="text-info text-center" role="alert">
+                            <p class="text-danger text-center" role="alert">
                                 <i><img src="../images/logo churrascaria maior.png" class="tamanho_img"></i>
                             </p>
                             <br>
-                            <div class="alert alert-info" role="alert">
+                            <div class="alert alert-danger" role="alert">
                                 <form action="login.php" name="form_login" id="form_login" method="POST" enctype="multipart/form-data">
                                     <label for="login_usuario">Login:</label>
                                     <p class="input-group">
                                         <span class="input-group-addon">
-                                            <span class="glyphicon glyphicon-user text-info" aria-hidden="true"></span>
+                                            <span class="glyphicon glyphicon-user text-danger" aria-hidden="true"></span>
                                         </span>
                                         <input type="text" name="login_usuario" id="login_usuario" class="form-control" autofocus required autocomplete="off" placeholder="Digite seu login.">
                                     </p>
                                     <label for="senha_usuario">Senha:</label>
                                     <p class="input-group">
                                         <span class="input-group-addon">
-                                            <span class="glyphicon glyphicon-qrcode text-info" aria-hidden="true"></span>
+                                            <span class="glyphicon glyphicon-qrcode text-danger" aria-hidden="true"></span>
                                         </span>
                                         <input type="password" name="senha_usuario" id="senha_usuario" class="form-control" required autocomplete="off" placeholder="Digite sua senha.">
                                     </p>
