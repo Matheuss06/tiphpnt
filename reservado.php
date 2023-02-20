@@ -22,7 +22,7 @@
         $resultadocliente = $conn->query($inserecliente);
     
     // Fim registro do usuario
-    } 
+    }     
 ?>
 
 
@@ -31,7 +31,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservar Mesa</title>
+    <title>Registrar</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/estilo.css">
 </head>
@@ -39,7 +39,6 @@
     <?php include 'menu_publico.php'; ?>
 
     <main class="container">
-
 
         <div>
             <section>
@@ -65,7 +64,7 @@
                                             <span class="input-group-addon">
                                                 <span class="glyphicon glyphicon-qrcode text-info" aria-hidden="true"></span>
                                             </span>
-                                            <input type="text" name="cpf"  class="form-control" required placeholder="Digite seu CPF." maxlength="12">
+                                            <input type="text" name="cpf"  class="form-control" required placeholder="Digite seu CPF." maxlength="11">
                                         </p>
 
                                         <label for="email">Email:</label>
@@ -83,8 +82,8 @@
                                             </span>
                                             <input type="text" name="senha"  class="form-control" required placeholder="Digite sua Senha.">
                                         </p>
-                                        <p class="text-right">
-                                            <input type="submit" value="Entrar" class="btn btn-primary">
+                                        <p class="text-center mt-3">
+                                            <input type="submit" value="Registrar" class="btn btn-primary">
                                         </p>
                                     </form>
                                 </div><!-- fecha alert -->
@@ -94,6 +93,7 @@
                 </article>
             </section>
         </div>
+   
     </main>
 
 
