@@ -3,9 +3,7 @@
 
     // Inserir o Registro do usuario no banco
     if($_POST){
-        $nome = $_POST['nome'];
         $cpf = $_POST['cpf'];
-        $email = $_POST['email'];
         $senha = md5($_POST['senha']);
         $insereregistro = "INSERT INTO tbusuarios (login_usuario, senha_usuario, nivel_usuario) VALUES ('$cpf','$senha', 'com');";
         $resultadoRegistro = $conn->query($insereregistro);
@@ -23,6 +21,27 @@
     
     // Fim registro do usuario
     }     
+    
+    // Recuperando o id do cliente
+    $idCliente = mysqli_insert_id($conn);
+
+    // Fazendo o pedido da Reserva no banco de dados
+    if($_POST){
+ 
+        $pessoas = $_POST['pessoas'];
+        $data_pedido = $_POST ['data_pedido'];
+    
+    
+        $inserepedido ="INSERT INTO tbpedido_reserva
+                      (id_clientes, pessoas, data_pedido, status)
+                      VALUES
+                      ('$idCliente','$pessoas','$data_pedido', 'Em Análise');
+                      ";
+    
+        $resultado = $conn->query($inserepedido);
+    }
+
+ 
 ?>
 
 
@@ -45,7 +64,7 @@
                 <article>
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-                            <h1 class="breadcrumb text-danger text-center">Faça seu Registro</h1>
+                            <h1 class="breadcrumb text-danger text-center">Faça sua Reserva</h1>
                             <div class="thumbnail">
                             <br>
                                 <div class="alert alert-danger" role="alert">
@@ -82,10 +101,31 @@
                                             </span>
                                             <input type="text" name="senha"  class="form-control" required placeholder="Digite sua Senha.">
                                         </p>
-                                        <p class="text-center mt-3">
-                                            <input type="submit" value="Registrar" class="btn btn-primary">
-                                        </p>
-                                    </form>
+
+  
+                                        <label for="id_pedido">Número de Pessoas:</label>
+                                        <select name="pessoas" id="pessoas" class="form-control" required>
+                                    
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+
+                                        </select>
+
+                                        <label for="data_pedido">Data da Reserva:</label>     
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>
+                                            </span>
+                                            <input type="date" name="data_pedido" id="data_pedido" class="form-control" required>
+                                        </div>
+
+                                        <br>
+                                        <hr>
+                                        <input type="submit" id="enviar" name="enviar" class="btn btn-danger btn-block" value="Reservar">
+                                     </form>
                                 </div><!-- fecha alert -->
                             </div><!-- fecha thumbnail -->
                         </div><!-- fecha dimensionamento -->
@@ -95,13 +135,6 @@
         </div>
    
     </main>
-
-
-
-
-
-
-
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
