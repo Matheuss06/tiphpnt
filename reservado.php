@@ -1,12 +1,12 @@
 <?php 
-    include 'conn/connect.php';
+include 'conn/connect.php';
 
-    // Inserir o Registro do usuario no banco
-    if($_POST){
-        $cpf = $_POST['cpf'];
-        $senha = md5($_POST['senha']);
-        $insereregistro = "INSERT INTO tbusuarios (login_usuario, senha_usuario, nivel_usuario) VALUES ('$cpf','$senha', 'com');";
-        $resultadoRegistro = $conn->query($insereregistro);
+// Inserir o Registro do usuario no banco
+if($_POST){
+    $cpf = $_POST['cpf'];
+    $senha = md5($_POST['senha']);
+    $insereregistro = "INSERT INTO tbusuarios (login_usuario, senha_usuario, nivel_usuario) VALUES ('$cpf','$senha', 'com');";
+    $resultadoRegistro = $conn->query($insereregistro);
 
     // Fim registro do usuario
     } 
@@ -28,20 +28,34 @@
     // Fazendo o pedido da Reserva no banco de dados
     if($_POST){
  
-        $pessoas = $_POST['pessoas'];
-        $data_pedido = $_POST ['data_pedido'];
+    $pessoas = $_POST['pessoas'];
+    $data_pedido = $_POST ['data_pedido'];
     
     
-        $inserepedido ="INSERT INTO tbpedido_reserva
-                      (id_clientes, pessoas, data_pedido, status)
-                      VALUES
-                      ('$idCliente','$pessoas','$data_pedido', 'Em Análise');
-                      ";
+    $inserepedido ="INSERT INTO tbpedido_reserva
+                    (id_clientes, pessoas, data_pedido, status)
+                    VALUES
+                    ('$idCliente','$pessoas','$data_pedido', 'Em Análise');
+                    ";
     
-        $resultado = $conn->query($inserepedido);
-    }
+    $resultado = $conn->query($inserepedido);
+}
 
- 
+// Fazendo a limitação da data da reserva
+// Obtém a data atual
+$min = new DateTime();
+$max = new DateTime();
+
+// Adiciona dois dias
+$min->add(new DateInterval('P2D'));
+
+// Adicionar 90 dias à data atual
+$max->add(new DateInterval('P90D'));
+
+// Formata a data para o padrão
+$minDate = $min->format('Y-m-d');
+$maxDate = $max->format('Y-m-d');
+
 ?>
 
 
@@ -81,7 +95,7 @@
                                         <label for="cpf">CPF:</label>
                                         <p class="input-group">
                                             <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-qrcode text-info" aria-hidden="true"></span>
+                                                <span class="glyphicon glyphicon-file text-info" aria-hidden="true"></span>
                                             </span>
                                             <input type="text" name="cpf"  class="form-control" required placeholder="Digite seu CPF." maxlength="11">
                                         </p>
@@ -89,7 +103,7 @@
                                         <label for="email">Email:</label>
                                         <p class="input-group">
                                             <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-qrcode text-info" aria-hidden="true"></span>
+                                                <span class="glyphicon glyphicon-envelope text-info" aria-hidden="true"></span>
                                             </span>
                                             <input type="text" name="email"  class="form-control" required placeholder="Digite seu Email.">
                                         </p>
@@ -97,7 +111,7 @@
                                         <label for="email">Senha:</label>
                                         <p class="input-group">
                                             <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-qrcode text-info" aria-hidden="true"></span>
+                                                <span class="glyphicon glyphicon-lock text-info" aria-hidden="true"></span>
                                             </span>
                                             <input type="text" name="senha"  class="form-control" required placeholder="Digite sua Senha.">
                                         </p>
@@ -117,9 +131,9 @@
                                         <label for="data_pedido">Data da Reserva:</label>     
                                         <div class="input-group">
                                             <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>
+                                                <span class="glyphicon glyphicon-cutlery text-info" aria-hidden="true"></span>
                                             </span>
-                                            <input type="date" name="data_pedido" id="data_pedido" class="form-control" required>
+                                            <input type="date" name="data_pedido" id="data_pedido" class="form-control" required min="<?php echo $minDate; ?>" max="<?php echo $maxDate; ?>">
                                         </div>
 
                                         <br>
