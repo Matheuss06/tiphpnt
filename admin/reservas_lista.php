@@ -58,13 +58,10 @@ $rows = $lista->num_rows;
                                 <span class="hidden-xs">INFORMAÇÕES</span>
                             </a> 
 
-                            <button 
-                                data-nome="<?php echo $row['status'];?>" 
-                                data-id="<?php echo $row['id_pedido'];?>"
-                                class="status btn btn-xs btn-block btn-primary">
+                            <a href="reservas_atualiza.php?id_clientes=<?php echo $row['id_clientes']?>" target="_self" class="btn btn-block btn-primary btn-xs" role="button">
                                 <span class="glyphicon glyphicon-cog"></span>
-                                <span class="hidden-xs">Status</span>
-                            </button>
+                                <span class="hidden-xs">STATUS</span>
+                            </a>
 
                             <button 
                                 data-nome="<?php echo $row['pessoas'];?>" 
@@ -109,32 +106,6 @@ $rows = $lista->num_rows;
     </div>
     <!-- fim do modal para excluir -->
 
-        <!-- inicio do modal para Status -->
-        <div class="modal fade" id="modalstatus" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4>Status do Pedido</h4>
-                </div>
-                <div class="modal-body">
-                <label for="status">Status:</label>
-                    <select name="status" id="status" class="form-control" required>
-                                    
-                        <option value="Confirmado">Confirmado</option>
-                        <option value="Em Análise">Em Análise</option>
-                        <option value="Recusado">Recusado</option>
-
-                    </select>
-                    <h4><span class="status"></span></h4>
-                </div>      
-                <div class="modal-footer">
-                <input type="submit" class="btn btn-danger" data-dismiss="modal" value="Voltar">
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- fim do modal para Status -->
 
 <!-- inicio do modal de Excluir -->
 
@@ -153,6 +124,7 @@ $rows = $lista->num_rows;
         $('#modalEdit').modal('show'); // chamar o modal
     });
 </script>
+
 
 <!-- inicio do modal de Status -->
 <script type="text/javascript">
