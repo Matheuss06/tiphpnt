@@ -1,9 +1,14 @@
 <?php 
+// Tabela de Pedido de Reservas
 include 'acesso_com.php';
 include '../conn/connect.php';
-$lista = $conn->query("select * from tbpedido_reserva");
+
+$lista = $conn->query("select id_pedido, id_clientes, pessoas, data_pedido, status, nome, cpf, email 
+from tbpedido_reserva inner join tbclientes
+ON tbpedido_reserva.id_clientes = tbclientes.id_cliente");
 $row = $lista->fetch_assoc();
 $rows = $lista->num_rows;
+
 ?>
 
 <!DOCTYPE html>
@@ -15,11 +20,11 @@ $rows = $lista->num_rows;
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/estilo.css">
 </head>
-<body class="fundofixo"> 
+<body class="fundoadm"> 
     <?php include "menu_adm.php"; ?>
     <main class="container">
-        <h2 class="breadcrumb alert-success" >Lista de Reservas </h2>
-        <table class="table table-hover table-condensed tb-opacidade bg-success"> 
+        <h2 class="breadcrumb alert-info" >Lista de Reservas </h2>
+        <table class="table table-hover table-condensed tb-opacidade bg-info"> 
             <thead>
                 <th class="hidden">ID</th>
                 <th>N° PESSOAS</th>
@@ -48,10 +53,19 @@ $rows = $lista->num_rows;
                         </td>
                        
                         <td>
-                            <button class="info btn btn-warning btn-block btn-xs"> 
+                            <a href="reservas_info.php?id_clientes=<?php echo $row['id_clientes']?>" target="_self" class="btn btn-block btn-primary btn-xs" role="button">
                                 <span class="glyphicon glyphicon-plus"></span>
                                 <span class="hidden-xs">INFORMAÇÕES</span>
+                            </a> 
+
+                            <button 
+                                data-nome="<?php echo $row['status'];?>" 
+                                data-id="<?php echo $row['id_pedido'];?>"
+                                class="status btn btn-xs btn-block btn-primary">
+                                <span class="glyphicon glyphicon-cog"></span>
+                                <span class="hidden-xs">Status</span>
                             </button>
+
                             <button 
                                 data-nome="<?php echo $row['pessoas'];?>" 
                                 data-id="<?php echo $row['id_pedido'];?>"
@@ -66,7 +80,10 @@ $rows = $lista->num_rows;
             </tbody><!-- final corpo da tabela -->
         </table>
     </main>
-    <!-- inicio do modal para excluir... -->
+
+
+
+    <!-- inicio do modal para excluir -->
     <div class="modal fade" id="modalEdit" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -90,29 +107,39 @@ $rows = $lista->num_rows;
             </div>
         </div>
     </div>
+    <!-- fim do modal para excluir -->
 
-        <!-- inicio do modal de informações... -->
-        <div class="modal fade" id="modalinfo" role="dialog">
+        <!-- inicio do modal para Status -->
+        <div class="modal fade" id="modalstatus" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 style="font-weight: bold;">Informações do Cliente</h4>
+                    <h4>Status do Pedido</h4>
                 </div>
                 <div class="modal-body">
-                    
-                    <h4><span class="nome text-danger"></span></h4>
-                </div>
+                <label for="status">Status:</label>
+                    <select name="status" id="status" class="form-control" required>
+                                    
+                        <option value="Confirmado">Confirmado</option>
+                        <option value="Em Análise">Em Análise</option>
+                        <option value="Recusado">Recusado</option>
+
+                    </select>
+                    <h4><span class="status"></span></h4>
+                </div>      
                 <div class="modal-footer">
-                    <a href="#" type="button" class="btn btn-success">
-                        Confirmar
-                    </a>
-                    <button class="btn btn-danger" data-dismiss="modal">
-                        Cancelar
-                    </button>
+                <input type="submit" class="btn btn-danger" data-dismiss="modal" value="Voltar">
+
                 </div>
             </div>
         </div>
     </div>
+    <!-- fim do modal para Status -->
+
+<!-- inicio do modal de Excluir -->
+
+</div>  
+
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
@@ -127,14 +154,14 @@ $rows = $lista->num_rows;
     });
 </script>
 
+<!-- inicio do modal de Status -->
 <script type="text/javascript">
-    $('.info').on('click',function(){
+    $('.status').on('click',function(){
         var nome = $(this).data('nome'); //busca o nome com a descrição (data-nome)
         var id = $(this).data('id'); // busca o id (data-id)
         //console.log(id + ' - ' + nome); //exibe no console
         $('span.nome').text(nome); // insere o nome do item na confirmação
-        $('#modalinfo').modal('show'); // chamar o modal
+        $('#modalstatus').modal('show'); // chamar o modal
     });
 </script>
-
 </html>

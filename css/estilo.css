@@ -17,6 +17,10 @@
     background-color: rgb(255, 0, 0);
 }
 
+.fundoadm{
+    background-color: rgb(16, 3, 65);
+}
+
 .flex-center{
     display: flex;
     justify-content: center;
@@ -42,4 +46,8 @@
 .link_registro{
     cursor: pointer;
     font-size: 10pt;
+}
+
+.texto_negrito{
+    font-weight: bold;
 }
