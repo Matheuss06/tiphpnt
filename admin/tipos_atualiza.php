@@ -43,22 +43,22 @@ $numRows = $lista->num_rows;
     <link rel="stylesheet" href="../css/estilo.css">
     <title>Tipos - insere</title>
 </head>
-<body>
+<body class="fundoadm">
     <?php include 'menu_adm.php';?>
 
     <main class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-offset-2 col-sm-6 col-md-8">
-                <h2 class="breadcrumb text-primary">
+                <h2 class="breadcrumb text-info">
                     <a href="tipos_lista.php">
-                        <button class="btn btn-danger">
+                        <button class="btn btn-info">
                             <span class="glyphicon glyphicon-chevron-left"></span>
                         </button>
                     </a>
                     Alterando o Tipo
                 </h2>
                 <div class="thumbnail">
-                    <div class="alert alert-primary" role="alert">
+                    <div class="alert alert-info" role="alert">
                         <form action="tipos_atualiza.php" method="post" name="form_tipos_insere" enctype="multipart/form-data" id="form_tipos_insere" value="<?php echo $row['id_tipo'] ?>">
                             <input type="hidden" name="id_tipo" id="id_tipo" value="<?php echo $row['id_tipo']?>">
                             <label for="rotulo_tipo">Tipo:</label>
@@ -80,7 +80,7 @@ $numRows = $lista->num_rows;
                     
 
                             <hr>
-                            <input type="submit" id="atualizar" name="atualizar" class="btn btn-danger btn-block" value="Atualizar">
+                            <input type="submit" id="atualizar" name="atualizar" class="btn btn-success btn-block" value="Atualizar">
                         
                         </form>
                     </div>

@@ -15,11 +15,11 @@ $rows = $lista->num_rows;
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/estilo.css">
 </head>
-<body> 
+<body class="fundoadm"> 
     <?php include "menu_adm.php"; ?>
     <main class="container">
-        <h2 class="breadcrumb alert-success" >Lista de Tipos </h2>
-        <table class="table table-hover table-condensed tb-opacidade bg-success"> 
+        <h2 class="breadcrumb alert-info">Lista de Tipos </h2>
+        <table class="table table-hover table-condensed tb-opacidade bg-info"> 
             <thead>
                 <th class="hidden">ID</th>
                 <th>TIPO</th>
@@ -83,7 +83,7 @@ $rows = $lista->num_rows;
                     <h4><span class="nome text-danger"></span></h4>
                 </div>
                 <div class="modal-footer">
-                    <a href="#" type="button" class="btn btn-success delete-yes">
+                    <a href="#" type="button" class="btn btn-info delete-yes">
                         Confirmar
                     </a>
                     <button class="btn btn-danger" data-dismiss="modal">

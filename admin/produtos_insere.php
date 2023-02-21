@@ -49,22 +49,22 @@ if($_POST){
     <link rel="stylesheet" href="../css/estilo.css">
     <title>Produto - insere</title>
 </head>
-<body>
+<body class="fundoadm">
     <?php include 'menu_adm.php';?>
 
     <main class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-offset-2 col-sm-6 col-md-8">
-                <h2 class="breadcrumb text-danger">
+                <h2 class="breadcrumb text-info">
                     <a href="produtos_lista.php">
-                        <button class="btn btn-danger">
+                        <button class="btn btn-info">
                             <span class="glyphicon glyphicon-chevron-left"></span>
                         </button>
                     </a>
                     Inserindo Produtos
                 </h2>
                 <div class="thumbnail">
-                    <div class="alert alert-danger" role="alert">
+                    <div class="alert alert-info" role="alert">
                         <form action="produtos_insere.php" method="post" name="form_produto_insere" enctype="multipart/form-data" id="form_produto_insere">
                             <label for="id_tipo_produto">Tipo:</label>
                             <div class="input-group">
@@ -126,7 +126,7 @@ if($_POST){
                             </div>
                             <br>
                             <hr>
-                            <input type="submit" id="enviar" name="enviar" class="btn btn-danger btn-block" value="Cadastrar">
+                            <input type="submit" id="enviar" name="enviar" class="btn btn-success btn-block" value="Cadastrar">
                         </form>
                     </div>
                 </div>

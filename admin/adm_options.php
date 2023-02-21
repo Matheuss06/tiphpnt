@@ -11,7 +11,7 @@
     <!-- Link para CSS específico -->
     <link rel="stylesheet" href="../css/estilo.css" type="text/css">
 </head>
-<body class="fundofixo">
+<body class="fundoadm">
 <main class="container">
 <h1 class="breadcrumb">Área Administrativa</h1>
 <div class="row"><!-- manter os elementos na linha -->

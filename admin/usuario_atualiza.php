@@ -45,22 +45,22 @@ $numRows = $lista->num_rows;
     <link rel="stylesheet" href="../css/estilo.css">
     <title>Usuarios - insere</title>
 </head>
-<body>
+<body class="fundoadm">
     <?php include 'menu_adm.php';?>
 
     <main class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-offset-2 col-sm-6 col-md-8">
-                <h2 class="breadcrumb text-primary">
+                <h2 class="breadcrumb text-info">
                     <a href="usuarios_lista.php">
-                        <button class="btn btn-danger">
+                        <button class="btn btn-info">
                             <span class="glyphicon glyphicon-chevron-left"></span>
                         </button>
                     </a>
                     Alterando o Usuario
                 </h2>
                 <div class="thumbnail">
-                    <div class="alert alert-primary" role="alert">
+                    <div class="alert alert-info" role="alert">
                         <form action="usuario_atualiza.php" method="post" name="form_usuario_insere" enctype="multipart/form-data" id="form_usuario_insere" value="<?php echo $row['id_usuario']?>">
                             <input type="hidden" name="id_usuario" id="id_usuario" value="<?php echo $row['id_usuario']?>">
                             <label for="login_usuario">Login:</label>
@@ -86,7 +86,7 @@ $numRows = $lista->num_rows;
                             </div>
                     
                             <hr>
-                            <input type="submit" id="atualizar" name="atualizar" class="btn btn-danger btn-block" value="Atualizar">
+                            <input type="submit" id="atualizar" name="atualizar" class="btn btn-success btn-block" value="Atualizar">
                         </form>
                     </div>
                 </div>
