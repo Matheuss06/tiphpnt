@@ -140,6 +140,12 @@ $maxDate = $max->format('Y-m-d');
                                         <hr>
                                         <input type="submit" id="enviar" name="enviar" class="btn btn-danger btn-block" value="Reservar">
                                      </form>
+                                     <p class="text-center">
+                                        <small>
+                                            <br>
+                                            Possui um cadastro? <a href="admin/login.php">Faça outra reserva</a>
+                                        </small>
+                                    </p>
                                 </div><!-- fecha alert -->
                             </div><!-- fecha thumbnail -->
                         </div><!-- fecha dimensionamento -->
