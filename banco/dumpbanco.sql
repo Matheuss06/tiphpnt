@@ -1,8 +1,8 @@
--- MariaDB dump 10.19  Distrib 10.4.25-MariaDB, for Win64 (AMD64)
+-- MariaDB dump 10.19  Distrib 10.4.24-MariaDB, for Win64 (AMD64)
 --
 -- Host: localhost    Database: ti93phpdb01
 -- ------------------------------------------------------
--- Server version	10.4.25-MariaDB
+-- Server version	10.4.24-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -23,12 +23,12 @@ DROP TABLE IF EXISTS `tbclientes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbclientes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_cliente` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
   `cpf` varchar(14) NOT NULL,
   `email` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id_cliente`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `tbclientes` (
 
 LOCK TABLES `tbclientes` WRITE;
 /*!40000 ALTER TABLE `tbclientes` DISABLE KEYS */;
-INSERT INTO `tbclientes` VALUES (7,'matheussss','12125432510','sdsadsada@sa'),(8,'matheussss','12125432510','sdsadsada@sa'),(9,'Matheusss','12125432510','sdsadsada@sa'),(10,'Matheusssss','12125432510','matheus@gmail');
+INSERT INTO `tbclientes` VALUES (23,'Matheus de Castro Souza','12345678999','matheus@gmail.com');
 /*!40000 ALTER TABLE `tbclientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -49,16 +49,15 @@ DROP TABLE IF EXISTS `tbpedido_reserva`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbpedido_reserva` (
-  `id_pedido` int(11) NOT NULL,
+  `id_pedido` int(11) NOT NULL AUTO_INCREMENT,
   `id_clientes` int(11) NOT NULL,
   `pessoas` varchar(1) NOT NULL,
   `data_pedido` date NOT NULL,
-  `data_reserva` date NOT NULL,
   `status` enum('Confirmado','Em Análise','Recusado') NOT NULL,
   PRIMARY KEY (`id_pedido`),
   KEY `fk_tbpedido_reserva_tbclientes1_idx` (`id_clientes`),
-  CONSTRAINT `fk_tbpedido_reserva_tbclientes1` FOREIGN KEY (`id_clientes`) REFERENCES `tbclientes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  CONSTRAINT `fk_tbpedido_reserva_tbclientes1` FOREIGN KEY (`id_clientes`) REFERENCES `tbclientes` (`id_cliente`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,6 +66,7 @@ CREATE TABLE `tbpedido_reserva` (
 
 LOCK TABLES `tbpedido_reserva` WRITE;
 /*!40000 ALTER TABLE `tbpedido_reserva` DISABLE KEYS */;
+INSERT INTO `tbpedido_reserva` VALUES (52,23,'4','2023-03-01','Em Análise'),(53,23,'2','2023-02-25','Em Análise'),(54,23,'3','2023-04-12','Em Análise'),(57,23,'5','2023-02-28','Em Análise'),(58,23,'1','2023-02-22','Em Análise'),(59,23,'3','2023-02-23','Em Análise'),(60,23,'2','2023-02-25','Em Análise'),(61,23,'1','2023-02-22','Em Análise'),(62,23,'2','2023-02-22','Em Análise'),(63,23,'1','2023-02-25','Em Análise'),(64,23,'4','2023-03-03','Em Análise'),(65,23,'1','2023-02-24','Em Análise');
 /*!40000 ALTER TABLE `tbpedido_reserva` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,7 +84,7 @@ CREATE TABLE `tbprodutos` (
   `resumo_produto` varchar(1000) DEFAULT NULL,
   `valor_produto` decimal(9,2) DEFAULT NULL,
   `imagem_produto` varchar(50) DEFAULT NULL,
-  `destaque_produto` enum('Sim','Não') NOT NULL,
+  `destaque_produto` enum('Sim','N?o') NOT NULL,
   PRIMARY KEY (`id_produto`),
   KEY `id_tipo_produto_fk` (`id_tipo_produto`),
   CONSTRAINT `id_tipo_produto_fk` FOREIGN KEY (`id_tipo_produto`) REFERENCES `tbtipos` (`id_tipo`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -97,7 +97,7 @@ CREATE TABLE `tbprodutos` (
 
 LOCK TABLES `tbprodutos` WRITE;
 /*!40000 ALTER TABLE `tbprodutos` DISABLE KEYS */;
-INSERT INTO `tbprodutos` VALUES (1,1,'Picanha ao alho',' Esta e a combinação do sabor inconfundível da picanha com o aroma acentuado do alho. Condimento que casa perfeitamente com este corte nobre',29.90,'picanha_alho.jpg','Não'),(2,1,'Fraldinha','Uma das carnes mais suculentas do cardápio. Requintada, com maciez particular e pouca gordura, e uma carne que chama atenção pela sua textura',29.90,'fraldinha.jpg','Não'),(4,1,'Cupim','Uma referência especial dos paulistas. Bastante gordurosa e macia, o cupim e uma carne fibrosa, que se desfia quando bem preparada ',29.90,'cupim.jpg','Não'),(5,1,'Picanha','Considerada por muitos como a mais nobre e procurada carne de churrasco, a picanha pode ser servida ao ponto , mal passada ou bem passada. Suculenta e com sua característica capa de gordura',29.90,'picanha_sem.jpg','Sim'),(6,2,'Apfelstrudel','Sobremesa tradicional austro-germânica e um delicioso folhado de maça e canela com sorvete',29.90,'strudel.jpg','Não'),(7,1,'Alcatra','Carne com muitas fibras, porém macia. Sua lateral apresenta uma boa parcela de gordura. Equilibrando de forma harmônica maciez e fibras.',29.90,'alcatra_pedra.jpg','Não'),(8,1,'Maminha','Vem da parte inferior da Alcatra. E uma carne com fibras, porém macia e saborosa.',29.90,'maminha.jpg','Não'),(9,2,'Abacaxi','Abacaxi assado com canela ao creme de leite condensado ',29.90,'abacaxi.jpg','Não'),(11,3,'Copo de Água','Copo de água totalmente gelada',5.90,'agua.png','Não'),(12,3,'Refrigerante','Refrigerante misterioso gelado de 500ml',6.90,'refrigerante.png','Não'),(13,3,'Heineken','Balde de heineken totalmente gelada para beber com a galera',32.00,'balde_cerveja.png','Não'),(14,1,'Pão de Alho','Um pão de alho diretamente da churrasqueira',5.00,'paodealho.png','Não'),(15,1,'Queijo','Três queijos coalhado saboroso...',12.00,'queijo.png','Sim'),(16,9,'Hamburger','Um hamburger duas vezes mais carne com queijo e tomate',29.00,'hamburger.png','Não'),(17,9,'Hamburger + Batata Frita','Promoção da churrascaria, combo de hamburger e batata frita deliciosa',15.90,'hamburger_batata.png','Sim');
+INSERT INTO `tbprodutos` VALUES (1,1,'Picanha ao alho',' Esta e a combina??o do sabor inconfund?vel da picanha com o aroma acentuado do alho. Condimento que casa perfeitamente com este corte nobre',29.90,'picanha_alho.jpg','N?o'),(2,1,'Fraldinha','Uma das carnes mais suculentas do card?pio. Requintada, com maciez particular e pouca gordura, e uma carne que chama aten??o pela sua textura',29.90,'fraldinha.jpg','N?o'),(4,1,'Cupim','Uma refer?ncia especial dos paulistas. Bastante gordurosa e macia, o cupim e uma carne fibrosa, que se desfia quando bem preparada ',29.90,'cupim.jpg','N?o'),(5,1,'Picanha','Considerada por muitos como a mais nobre e procurada carne de churrasco, a picanha pode ser servida ao ponto , mal passada ou bem passada. Suculenta e com sua caracter?stica capa de gordura',29.90,'picanha_sem.jpg','Sim'),(6,2,'Apfelstrudel','Sobremesa tradicional austro-germ?nica e um delicioso folhado de ma?a e canela com sorvete',29.90,'strudel.jpg','N?o'),(7,1,'Alcatra','Carne com muitas fibras, por?m macia. Sua lateral apresenta uma boa parcela de gordura. Equilibrando de forma harm?nica maciez e fibras.',29.90,'alcatra_pedra.jpg','N?o'),(8,1,'Maminha','Vem da parte inferior da Alcatra. E uma carne com fibras, por?m macia e saborosa.',29.90,'maminha.jpg','N?o'),(9,2,'Abacaxi','Abacaxi assado com canela ao creme de leite condensado ',29.90,'abacaxi.jpg','N?o'),(11,3,'Copo de ?gua','Copo de ?gua totalmente gelada',5.90,'agua.png','N?o'),(12,3,'Refrigerante','Refrigerante misterioso gelado de 500ml',6.90,'refrigerante.png','N?o'),(13,3,'Heineken','Balde de heineken totalmente gelada para beber com a galera',32.00,'balde_cerveja.png','N?o'),(14,1,'P?o de Alho','Um p?o de alho diretamente da churrasqueira',5.00,'paodealho.png','N?o'),(15,1,'Queijo','Tr?s queijos coalhado saboroso...',12.00,'queijo.png','Sim'),(16,9,'Hamburger','Um hamburger duas vezes mais carne com queijo e tomate',29.00,'hamburger.png','N?o'),(17,9,'Hamburger + Batata Frita','Promo??o da churrascaria, combo de hamburger e batata frita deliciosa',15.90,'hamburger_batata.png','Sim');
 /*!40000 ALTER TABLE `tbprodutos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -110,12 +110,13 @@ DROP TABLE IF EXISTS `tbreserva`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbreserva` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `mesa` int(11) NOT NULL,
-  `data_inicio` date NOT NULL,
+  `numero` int(11) NOT NULL,
+  `data_inicio` datetime NOT NULL,
+  `data_fim` datetime NOT NULL,
   `id_cliente` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_idcliente` (`id_cliente`),
-  CONSTRAINT `fk_idcliente` FOREIGN KEY (`id_cliente`) REFERENCES `tbclientes` (`id`)
+  CONSTRAINT `fk_idcliente` FOREIGN KEY (`id_cliente`) REFERENCES `tbclientes` (`id_cliente`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -167,7 +168,7 @@ CREATE TABLE `tbusuarios` (
   `nivel_usuario` enum('sup','com') NOT NULL,
   PRIMARY KEY (`id_usuario`),
   UNIQUE KEY `login_usuario_uniq` (`login_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -176,9 +177,29 @@ CREATE TABLE `tbusuarios` (
 
 LOCK TABLES `tbusuarios` WRITE;
 /*!40000 ALTER TABLE `tbusuarios` DISABLE KEYS */;
-INSERT INTO `tbusuarios` VALUES (1,'senac','81dc9bdb52d04dc20036dbd8313ed055','sup'),(2,'joao','81dc9bdb52d04dc20036dbd8313ed055','com'),(3,'maria','68053af2923e00204c3ca7c6a3150cf7','com'),(9,'matheus','81dc9bdb52d04dc20036dbd8313ed055','sup'),(10,'arthur','81dc9bdb52d04dc20036dbd8313ed055','com'),(11,' matheus@gmail','12125432510','com'),(13,'matheus@gmail','12125432510','com'),(17,'12125432510','1234','com');
+INSERT INTO `tbusuarios` VALUES (1,'senac','81dc9bdb52d04dc20036dbd8313ed055','sup'),(2,'joao','81dc9bdb52d04dc20036dbd8313ed055','com'),(3,'maria','68053af2923e00204c3ca7c6a3150cf7','com'),(9,'matheus','81dc9bdb52d04dc20036dbd8313ed055','sup'),(62,'12345678999','81dc9bdb52d04dc20036dbd8313ed055','com');
 /*!40000 ALTER TABLE `tbusuarios` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Temporary table structure for view `vw_tbpedidos`
+--
+
+DROP TABLE IF EXISTS `vw_tbpedidos`;
+/*!50001 DROP VIEW IF EXISTS `vw_tbpedidos`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `vw_tbpedidos` (
+  `id_pedido` tinyint NOT NULL,
+  `id_clientes` tinyint NOT NULL,
+  `pessoas` tinyint NOT NULL,
+  `data_pedido` tinyint NOT NULL,
+  `status` tinyint NOT NULL,
+  `nome` tinyint NOT NULL,
+  `cpf` tinyint NOT NULL,
+  `email` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Temporary table structure for view `vw_tbprodutos`
@@ -200,6 +221,25 @@ SET character_set_client = utf8;
   `destaque_produto` tinyint NOT NULL
 ) ENGINE=MyISAM */;
 SET character_set_client = @saved_cs_client;
+
+--
+-- Final view structure for view `vw_tbpedidos`
+--
+
+/*!50001 DROP TABLE IF EXISTS `vw_tbpedidos`*/;
+/*!50001 DROP VIEW IF EXISTS `vw_tbpedidos`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `vw_tbpedidos` AS select `p`.`id_pedido` AS `id_pedido`,`p`.`id_clientes` AS `id_clientes`,`p`.`pessoas` AS `pessoas`,`p`.`data_pedido` AS `data_pedido`,`p`.`status` AS `status`,`c`.`nome` AS `nome`,`c`.`cpf` AS `cpf`,`c`.`email` AS `email` from (`tbpedido_reserva` `p` join `tbclientes` `c`) where `p`.`id_clientes` = `c`.`id_cliente` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
 -- Final view structure for view `vw_tbprodutos`
@@ -229,4 +269,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-17 16:54:06
+-- Dump completed on 2023-02-22 17:42:37
