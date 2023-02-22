@@ -1,51 +1,30 @@
 <?php 
-// Tabela de Pedido de Reservas
-include 'acesso_com.php';
+include '../admin/acesso_com.php';
 include '../conn/connect.php';
-
-$lista = $conn->query("select id_pedido, id_clientes, pessoas, data_pedido, status, nome, cpf, email 
-from tbpedido_reserva inner join tbclientes
-ON tbpedido_reserva.id_clientes = tbclientes.id_cliente");
-$row = $lista->fetch_assoc();
-$rows = $lista->num_rows;
-
 ?>
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservas - lista</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/estilo.css">
-</head>
-<body class="fundoadm"> 
-    <?php include "menu_adm.php"; ?>
-    <main class="container">
-        <h2 class="breadcrumb alert-info" >Lista de Reservas </h2>
+        <h2 class="breadcrumb alert-info texto-negrito"><strong>Suas Reservas</strong></h2>
         <table class="table table-hover table-condensed tb-opacidade bg-info"> 
             <thead>
                 <th class="hidden">ID</th>
-                <th>N° PESSOAS</th>
                 <th>DATA DO PEDIDO</th>
+                <th>N° PESSOAS</th>
                 <th>STATUS</th>
             </thead>
             
             <tbody> <!-- início corpo da tabela -->
            	<!-- início estrutura repetição -->
-                <?php do{?>
+
                     <tr>
                         <td class="hidden">
                             <?php echo $row['id_pedido'];?>
                         </td>
 
                         <td>
-                            <?php echo $row['pessoas'];?>
-                        </td>
-                        
-                        <td>
                             <?php  echo $row['data_pedido'] ?> 
+                        </td>
+
+                        <td>
+                            <?php echo $row['pessoas'];?>
                         </td>
 
                         <td>
@@ -53,16 +32,6 @@ $rows = $lista->num_rows;
                         </td>
                        
                         <td>
-                            <a href="reservas_info.php?id_clientes=<?php echo $row['id_clientes']?>" target="_self" class="btn btn-block btn-primary btn-xs" role="button">
-                                <span class="glyphicon glyphicon-plus"></span>
-                                <span class="hidden-xs">INFORMAÇÕES</span>
-                            </a> 
-
-                            <a href="reservas_atualiza.php?id_clientes=<?php echo $row['id_clientes']?>" target="_self" class="btn btn-block btn-primary btn-xs" role="button">
-                                <span class="glyphicon glyphicon-cog"></span>
-                                <span class="hidden-xs">STATUS</span>
-                            </a>
-
                             <button 
                                 data-nome="<?php echo $row['pessoas'];?>" 
                                 data-id="<?php echo $row['id_pedido'];?>"
@@ -72,11 +41,10 @@ $rows = $lista->num_rows;
                             </button>
                         </td>
                     </tr>
-                    <?php }while($row = $lista->fetch_assoc());?>
+
        
             </tbody><!-- final corpo da tabela -->
         </table>
-    </main>
 
 
 
