@@ -113,7 +113,7 @@ $maxDate = $max->format('Y-m-d');
                                             <span class="input-group-addon">
                                                 <span class="glyphicon glyphicon-lock text-info" aria-hidden="true"></span>
                                             </span>
-                                            <input type="text" name="senha"  class="form-control" required placeholder="Digite sua Senha.">
+                                            <input type="password" name="senha"  class="form-control" required placeholder="Digite sua Senha.">
                                         </p>
 
   
