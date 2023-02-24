@@ -23,11 +23,11 @@ try
     // Define o remetente
     $mail->setFrom('churrasfornalha@outlook.com', 'Churrascaria Fornalha');
     // Define o destinatário
-    $mail->addAddress($_POST['email_contato'], $_POST['nome_contato']);
+    $mail->addAddress('churrasfornalha@outlook.com', 'Churrascaria Fornalha');
     // Conteúdo da mensagem
     $mail->isHTML(true);  // Seta o formato do e-mail para aceitar conteúdo HTML
-    $mail->Subject = 'Assunto';
-    $mail->Body    = $comentario;
+    $mail->Subject = "Email de ". $_POST['email_contato']. " Nome: " .$_POST['nome_contato'];
+    $mail->Body    = $_POST['comentario_contato'];
     $mail->AltBody = 'Este é o corpo da mensagem para clientes de e-mail que não reconhecem HTML';
     // Enviar
     $mail->send();
