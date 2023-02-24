@@ -10,13 +10,9 @@ if($_POST){
     $data_pedido = $_POST['data_pedido'];
     $status = $_POST['status'];
     
-    $update = "update tbpedido_reserva 
-                set id_pedido = '$id_pedido',
-                id_clientes = '$id_cli',
-                pessoas = '$pessoas',
-                data_pedido = '$data_pedido',
+    $update = "update tbpedido_reserva SET 
                 status = '$status'
-                WHERE id_clientes = $id_cli;";
+                WHERE id_pedido = $id_pedido;";
 
 
     $resultado = $conn->query($update);
@@ -26,11 +22,11 @@ if($_POST){
 }
 
 if($_GET){
-    $id = $_GET['id_clientes'];
+    $id = $_GET['id_pedido'];
 }else{
     $id_form = 0;
 }
-$lista = $conn->query("select * from tbpedido_reserva where id_clientes = $id");
+$lista = $conn->query("select * from tbpedido_reserva where id_pedido = $id");
 $row = $lista->fetch_assoc();
 $numRows = $lista->num_rows;
 ?>
@@ -78,7 +74,7 @@ $numRows = $lista->num_rows;
                             </div>
 
                             <div class="input-group">
-                                <input type="hidden" name="id_clientes" id="id_clientes" class="form-control" placeholder="Digite o tipo do produto" maxlength="100" required value="<?php echo $row['id_clientes']?>">
+                                <input type="text" name="id_clientes" id="id_clientes" class="form-control" placeholder="Digite o tipo do produto" maxlength="100" required value="<?php echo $row['id_clientes']?>">
                             </div>
 
                             <div class="input-group">

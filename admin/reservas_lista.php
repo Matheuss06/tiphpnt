@@ -53,12 +53,13 @@ $rows = $lista->num_rows;
                         </td>
                        
                         <td>
+                        
                             <a href="reservas_info.php?id_clientes=<?php echo $row['id_clientes']?>" target="_self" class="btn btn-block btn-primary btn-xs" role="button">
                                 <span class="glyphicon glyphicon-plus"></span>
                                 <span class="hidden-xs">INFORMAÇÕES</span>
                             </a> 
 
-                            <a href="reservas_atualiza.php?id_clientes=<?php echo $row['id_clientes']?>" target="_self" class="btn btn-block btn-primary btn-xs" role="button">
+                            <a href="reservas_atualiza.php?id_pedido=<?php echo $row['id_pedido']?>" target="_self" class="btn btn-block btn-primary btn-xs" role="button" >
                                 <span class="glyphicon glyphicon-cog"></span>
                                 <span class="hidden-xs">STATUS</span>
                             </a>
