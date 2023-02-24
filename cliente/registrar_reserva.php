@@ -50,17 +50,9 @@ $maxDate = $max->format('Y-m-d');
                                     <label for="id_pedido">Número de Pessoas:</label>
                                     <p class="input-group">
                                         <span class="input-group-addon">
-                                            <span class="glyphicon glyphicon-cutlery text-info"></span>
-                                        </span>
-                                    <select name="pessoas" id="pessoas" class="form-control" required>
-                                    
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-
-                                    </select>
+                                            <span class="glyphicon glyphicon-user text-info" aria-hidden="true"></span>
+                                        </span>    
+                                        <input type="number" min="1" name="pessoas" id="pessoas" class="form-control" required>
                                     </p>
 
                                     <label for="data_pedido">Data da Reserva:</label>     
