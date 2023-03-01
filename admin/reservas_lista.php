@@ -3,7 +3,7 @@
 include 'acesso_com.php';
 include '../conn/connect.php';
 
-$lista = $conn->query("select id_pedido, id_clientes, pessoas, data_pedido, status, nome, cpf, email 
+$lista = $conn->query("select id_pedido, id_clientes, pessoas, data_pedido, status, nome, cpf, email, mesa
 from tbpedido_reserva inner join tbclientes
 ON tbpedido_reserva.id_clientes = tbclientes.id_cliente");
 $row = $lista->fetch_assoc();
@@ -30,6 +30,7 @@ $rows = $lista->num_rows;
                 <th>N° PESSOAS</th>
                 <th>DATA DO PEDIDO</th>
                 <th>STATUS</th>
+                <th>MESA</th>
             </thead>
             
             <tbody> <!-- início corpo da tabela -->
@@ -51,6 +52,10 @@ $rows = $lista->num_rows;
                         <td>
                             <?php  echo $row['status'] ?> 
                         </td>
+
+                        <td>
+                            <?php echo $row['mesa'] ?>
+                        </td>
                        
                         <td>
                         
@@ -59,18 +64,11 @@ $rows = $lista->num_rows;
                                 <span class="hidden-xs">INFORMAÇÕES</span>
                             </a> 
                                 
-                            <?php if ($row['status'] == 'Confirmado' || $row['status'] == 'Recusado'){ ?>
-                            <a href="#" class="btn btn-block btn-warning btn-xs" role="button" disabled>
+                            <a href="reservas_concluir.php?id_pedido=<?php echo $row['id_pedido']?>" class="btn btn-block btn-success btn-xs" role="button">
                                 <span class="glyphicon glyphicon-cog"></span>
-                                <span class="hidden-xs">STATUS</span>
+                                <span class="hidden-xs">CONCLUIR</span>
                             </a>
 
-                            <?php }else{ ?>
-                            <a href="reservas_atualiza.php?id_pedido=<?php echo $row['id_pedido']?>" class="btn btn-block btn-warning btn-xs" role="button">
-                                <span class="glyphicon glyphicon-cog"></span>
-                                <span class="hidden-xs">STATUS</span>
-                            </a>
-                            <?php }; ?>
 
                         </td>
                     </tr>

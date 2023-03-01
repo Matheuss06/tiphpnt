@@ -39,7 +39,7 @@ include '../conn/connect.php';
                         data-id="<?php echo $row['id_pedido'];?>"
                         class="delete btn btn-xs btn-block btn-danger">
                         <span class="glyphicon glyphicon-trash"></span>
-                        <span class="hidden-xs">Arquivar</span>
+                        <span class="hidden-xs">CANCELAR</span>
                     </button>
                 </td>
             </tr>
@@ -56,11 +56,11 @@ include '../conn/connect.php';
         <div class="modal-content">
             <div class="modal-header">
                 <button class="close" data-dismiss="modal" type="button">
-                    &times;
+                    CANCELAMENTO DE RESERVA
                 </button>
             </div>
             <div class="modal-body">
-                Deseja mesmo excluir o item?
+                Deseja mesmo cancelar essa reserva?
                 <h4><span class="nome text-danger"></span></h4>
             </div>
             <div class="modal-footer">

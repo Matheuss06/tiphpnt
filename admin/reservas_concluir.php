@@ -5,15 +5,13 @@ include '../conn/connect.php';
 if($_POST){ 
 
     $id_pedido = $_POST['id_pedido'];
-    $id_cli = $_POST['id_clientes'];
-    $pessoas = $_POST['pessoas'];
-    $data_pedido = $_POST['data_pedido'];
     $status = $_POST['status'];
+    $mesa = $_POST['mesa'];
     
     $update = "update tbpedido_reserva SET 
-                status = '$status'
+                mesa = '$mesa',
+                status = 'Confirmado'
                 WHERE id_pedido = $id_pedido;";
-
 
     $resultado = $conn->query($update);
     if($resultado){
@@ -38,7 +36,7 @@ $numRows = $lista->num_rows;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/estilo.css">
-    <title>Alterar Status</title>
+    <title>Confirmando Reserva</title>
 </head>
 <body class="fundoadm">
 <?php include 'menu_adm.php';?>
@@ -52,29 +50,25 @@ $numRows = $lista->num_rows;
                             <span class="glyphicon glyphicon-chevron-left"></span>
                         </button>
                     </a>
-                    Alterando o Status
+                    Confirmando a Reserva
                 </h2>
                 <div class="thumbnail">
                     <div class="alert alert-primary" role="alert">
-                        <form action="reservas_atualiza.php" method="post" name="form_reservas_atualiza" enctype="multipart/form-data" id="form_reservas_atualiza">
+                        <form action="reservas_concluir.php" method="post" name="form_reservas_atualiza" enctype="multipart/form-data" id="form_reservas_atualiza">
                             <input type="hidden" name="id_pedido" id="id_pedido" value="<?php echo $row['id_pedido']?>">
-                            <label for="status">Status:</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
-                                </span>
 
-                                <select name="status" id="status" class="form-control" required>
-                                    
-                                    <option value="Confirmado">Confirmado</option>
-                                    <option value="Em Análise">Em Análise</option>
-                                    <option value="Recusado">Recusado</option>
-            
-                                </select>
+
+                            <div class="input-group">
+                            <label for="mesa">Mesa:</label>
+                                <input type="number" name="mesa" id="mesa" class="form-control" placeholder="Digite a mesa desejada" maxlength="100" required value="<?php echo $row['mesa']?>">
                             </div>
 
                             <div class="input-group">
                                 <input type="hidden" name="id_clientes" id="id_clientes" class="form-control" placeholder="Digite o tipo do produto" maxlength="100" required value="<?php echo $row['id_clientes']?>">
+                            </div>
+
+                            <div class="input-group">
+                                <input type="hidden" name="status" id="status" class="form-control" placeholder="Digite o tipo do produto" maxlength="100" required value="Confirmado">
                             </div>
 
                             <div class="input-group">
