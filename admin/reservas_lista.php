@@ -9,6 +9,11 @@ ON tbpedido_reserva.id_clientes = tbclientes.id_cliente");
 $row = $lista->fetch_assoc();
 $rows = $lista->num_rows;
 
+if(isset($_GET['id_pedido'])){
+    $lista = $conn->query("update tbpedido_reserva set status = 'Recusado' where id_pedido = ".$_GET['id_pedido'].";");
+header('location: reservas_lista.php');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -69,7 +74,10 @@ $rows = $lista->num_rows;
                                 <span class="hidden-xs">CONCLUIR</span>
                             </a>
 
-
+                            <a href="reservas_lista.php?id_pedido=<?php echo $row['id_pedido']?>" class="btn btn-block btn-danger btn-xs" role="button">
+                                <span class="glyphicon glyphicon-cog"></span>
+                                <span class="hidden-xs">RECUSAR</span>
+                            </a>
                         </td>
                     </tr>
                     <?php }while($row = $lista->fetch_assoc());?>
