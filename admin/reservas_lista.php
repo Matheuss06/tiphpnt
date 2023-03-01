@@ -59,26 +59,19 @@ $rows = $lista->num_rows;
                                 <span class="hidden-xs">INFORMAÇÕES</span>
                             </a> 
                                 
-                            <?php if ($row['status'] == 'Confirmado' || $row['status'] == 'Recusado'): ?>
-                            <a href="#" class="btn btn-block btn-primary btn-xs" role="button" disabled>
+                            <?php if ($row['status'] == 'Confirmado' || $row['status'] == 'Recusado'){ ?>
+                            <a href="#" class="btn btn-block btn-warning btn-xs" role="button" disabled>
                                 <span class="glyphicon glyphicon-cog"></span>
                                 <span class="hidden-xs">STATUS</span>
                             </a>
 
-                            <?php else: ?>
-                            <a href="reservas_atualiza.php?id_pedido=<?php echo $row['id_pedido']?>" class="btn btn-block btn-primary btn-xs" role="button">
+                            <?php }else{ ?>
+                            <a href="reservas_atualiza.php?id_pedido=<?php echo $row['id_pedido']?>" class="btn btn-block btn-warning btn-xs" role="button">
                                 <span class="glyphicon glyphicon-cog"></span>
                                 <span class="hidden-xs">STATUS</span>
                             </a>
-                            <?php endif; ?>
+                            <?php }; ?>
 
-                            <button 
-                                data-nome="<?php echo $row['pessoas'];?>" 
-                                data-id="<?php echo $row['id_pedido'];?>"
-                                class="delete btn btn-xs btn-block btn-danger">
-                                <span class="glyphicon glyphicon-trash"></span>
-                                <span class="hidden-xs">Arquivar</span>
-                            </button>
                         </td>
                     </tr>
                     <?php }while($row = $lista->fetch_assoc());?>
