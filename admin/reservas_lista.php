@@ -3,7 +3,7 @@
 include 'acesso_com.php';
 include '../conn/connect.php';
 
-$lista = $conn->query("select id_pedido, id_clientes, pessoas, data_pedido, status, nome, cpf, email, mesa
+$lista = $conn->query("select id_pedido, id_clientes, pessoas, data_pedido, status, nome, cpf, email, mesa, hash_code
 from tbpedido_reserva inner join tbclientes
 ON tbpedido_reserva.id_clientes = tbclientes.id_cliente");
 $row = $lista->fetch_assoc();
@@ -32,6 +32,7 @@ header('location: reservas_lista.php');
         <table class="table table-hover table-condensed tb-opacidade bg-info"> 
             <thead>
                 <th class="hidden">ID</th>
+                <th>CÓDIGO DA RESERVA</th>
                 <th>N° PESSOAS</th>
                 <th>DATA DO PEDIDO</th>
                 <th>STATUS</th>
@@ -44,6 +45,10 @@ header('location: reservas_lista.php');
                     <tr>
                         <td class="hidden">
                             <?php echo $row['id_pedido'];?>
+                        </td>
+
+                        <td>
+                            <?php echo $row['hash_code'];?>
                         </td>
 
                         <td>

@@ -21,6 +21,9 @@ if($_POST){
     
     // Fim registro do usuario
     }     
+
+    // Criando o Hash Code
+    
     
     // Recuperando o id do cliente
     $idCliente = mysqli_insert_id($conn);
