@@ -37,7 +37,7 @@ include '../conn/connect.php';
                     <button 
                         data-nome="<?php echo $row['pessoas'];?>" 
                         data-id="<?php echo $row['id_pedido'];?>"
-                        class="delete btn btn-xs btn-block btn-danger">
+                        class="cancela btn btn-xs btn-block btn-danger">
                         <span class="glyphicon glyphicon-trash"></span>
                         <span class="hidden-xs">CANCELAR</span>
                     </button>
@@ -64,7 +64,7 @@ include '../conn/connect.php';
                 <h4><span class="nome text-danger"></span></h4>
             </div>
             <div class="modal-footer">
-                <a href="#" type="button" class="btn btn-success delete-yes">
+                <a href="#" type="button" class="btn btn-success cancela-yes">
                     Confirmar
                 </a>
                 <button class="btn btn-danger" data-dismiss="modal">
@@ -82,12 +82,12 @@ include '../conn/connect.php';
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script type="text/javascript">
-    $('.delete').on('click',function(){
+    $('.cancela').on('click',function(){
         var nome = $(this).data('nome'); //busca o nome com a descrição (data-nome)
         var id = $(this).data('id'); // busca o id (data-id)
         //console.log(id + ' - ' + nome); //exibe no console
         $('span.nome').text(nome); // insere o nome do item na confirmação
-        $('a.delete-yes').attr('href','usuario_excluir.php?id_usuario='+id); //chama o arquivo php para excluir o produto
+        $('a.cancela-yes').attr('href','cliente_cancelar.php?id_pedido='+id); //chama o arquivo php para excluir o produto
         $('#modalEdit').modal('show'); // chamar o modal
     });
 </script>
