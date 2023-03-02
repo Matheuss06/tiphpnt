@@ -1,41 +1,37 @@
-<?php
+<?php 
+require 'PHPMailer/PHPMailerAutoload.php';
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-require 'PHPMailer/src/Exception.php';
-require 'PHPMailer/src/PHPMailer.php';
-require 'PHPMailer/src/SMTP.php';
+$Mail = new PHPMailer;
+$Mail->isSMTP();
 
-// Instância da classe
-$mail = new PHPMailer(true);
-try
-{
-    // Configurações do servidor
-    $mail->isSMTP();        //Devine o uso de SMTP no envio
-    $mail->SMTPAuth = true; //Habilita a autenticação SMTP
-    $mail->Username   = 'churrasfornalha@outlook.com';
-    $mail->Password   = '1234churras';
-    // Criptografia do envio SSL também é aceito
-    $mail->SMTPSecure = 'STARTTLS';
-    // Informações específicadas pelo Google
-    $mail->Host = 'smtp.office365.com';
-    $mail->Port = 587;
-    // Define o remetente
-    $mail->setFrom('churrasfornalha@outlook.com', 'Churrascaria Fornalha');
-    // Define o destinatário
-    $mail->addAddress('churrasfornalha@outlook.com', 'Churrascaria Fornalha');
-    // Conteúdo da mensagem
-    $mail->isHTML(true);  // Seta o formato do e-mail para aceitar conteúdo HTML
-    $mail->Subject = "Email de ". $_POST['email_contato']. " Nome: " .$_POST['nome_contato'];
-    $mail->Body    = $_POST['comentario_contato'];
-    $mail->AltBody = 'Este é o corpo da mensagem para clientes de e-mail que não reconhecem HTML';
-    // Enviar
-    $mail->send();
-    echo 'A mensagem foi enviada!';
+// CONFIGURANDO O SERVIDOR DE EMAIL
+
+$Mail->Host       = "smtp.office365.com";
+$Mail->Port       = "587";
+$Mail->SMTPSecure = "STARTTLS";
+$Mail->SMTPAuth   = "true";
+$Mail->Username   = 'churrascariafornalha@outlook.com';
+$Mail->Password   = '1234churras';
+ // Define o remetente
+$Mail->setFrom('churrascariafornalha@outlook.com', 'Churrascaria Fornalha');
+
+// Define o destinatário
+$Mail->addAddress('churrascariafornalha@outlook.com', 'Churrascaria Fornalha');
+
+ // Conteúdo da mensagem
+$Mail->Subject = "Email de ". $_POST['email_contato']. " Nome: " .$_POST['nome_contato'];
+$Mail->Body    = $_POST['comentario_contato'];
+
+$Mail->IsHTML (true);
+
+if($Mail->send()){
+
+echo "O email foi enviado com sucesso";
+
 }
-catch (Exception $e)
-{
-    echo "A mensagem não pôde ser enviada. Erro do Mailer:  {$mail->ErrorInfo}";
+else{
+    echo "falha no email" .$Mail->ErrorInfo;
+
 }
 
 ?>
