@@ -69,6 +69,18 @@ header('location: reservas_lista.php');
                                 <span class="hidden-xs">INFORMAÇÕES</span>
                             </a> 
                                 
+                            <?php if ($row['status'] == 'Cancelado' | $row['status'] == 'Confirmado' | $row['status'] == 'Recusado'){ ?>
+                            <a class="btn btn-block btn-danger btn-xs" role="button" disabled>
+                                <span class="glyphicon glyphicon-cog"></span>
+                                <span class="hidden-xs">CONCLUIR</span>
+                            </a>
+
+                            <a class="btn btn-block btn-danger btn-xs" role="button" disabled>
+                                <span class="glyphicon glyphicon-cog"></span>
+                                <span class="hidden-xs">RECUSAR</span>
+                            </a>
+                            <?php }else{ ?>
+
                             <a href="reservas_concluir.php?id_pedido=<?php echo $row['id_pedido']?>" class="btn btn-block btn-success btn-xs" role="button">
                                 <span class="glyphicon glyphicon-cog"></span>
                                 <span class="hidden-xs">CONCLUIR</span>
@@ -78,6 +90,7 @@ header('location: reservas_lista.php');
                                 <span class="glyphicon glyphicon-cog"></span>
                                 <span class="hidden-xs">RECUSAR</span>
                             </a>
+                            <?php };?>
                         </td>
                     </tr>
                     <?php }while($row = $lista->fetch_assoc());?>
